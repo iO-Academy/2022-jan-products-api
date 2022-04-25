@@ -2,7 +2,7 @@
   "name": "2022-jan-products-api",
   "version": "1.0.0",
   "description": "project template repo",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/iO-Academy/2022-jan-products-api#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "promise-mysql": "^5.1.0"
   }
 }
