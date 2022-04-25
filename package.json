@@ -1,0 +1,22 @@
+{
+  "name": "2022-jan-products-api",
+  "version": "1.0.0",
+  "description": "project template repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iO-Academy/2022-jan-products-api.git"
+  },
+  "author": "Leafy Sea Dragons",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iO-Academy/2022-jan-products-api/issues"
+  },
+  "homepage": "https://github.com/iO-Academy/2022-jan-products-api#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
