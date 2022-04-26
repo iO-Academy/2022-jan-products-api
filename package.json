@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/iO-Academy/2022-jan-products-api#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "promise-mysql": "^5.1.0"
   }
 }
