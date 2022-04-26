@@ -5,25 +5,29 @@ const getAllProducts = async (connection) => {
 
 const updateProduct = async(connection, SKU, name, price, stockLevel) => {
 
-    let query = 'UPDATE `products` SET '
+    if (typeof SKU === 'string'
+        && SKU.length < 15) {
 
-    if (typeof name !== 'undefined') {
-        query += '`name` = ' + "'" + name + "'"
+        let query = 'UPDATE `products` SET '
+
+        if (typeof name === 'string'
+            && name.length < 50) {
+            query += '`name` = ' + "'" + name + "' , "
+        }
+        if (typeof price === 'number') {
+            query += '`price` = ' + "'" + price + "' "
+        }
+        if (typeof stockLevel === 'number'
+            && stockLevel >= 0) {
+            query += ', `stock_level` = ' + "'" + stockLevel + "' "
+        }
+
+        query += 'WHERE `SKU` = ' + "'" + SKU + "'"
+
+        console.log(query)
+
+        // return await connection.query("UPDATE `products` SET `name` = 'Crocs Pink S9' WHERE `SKU` = 'CRO-9-PIN'")
     }
-    if (typeof price !== 'undefined') {
-        query += ', `price` = ' + "'" + price + "' "
-    }
-    if (typeof stockLevel !== 'undefined') {
-        query += ', `stock_level` = ' + "'" + stockLevel + "' "
-    }
-
-    query += 'WHERE `SKU` = ' + "'" + SKU + "'"
-
-    console.log(query)
-
-     // return await connection.query("UPDATE `products` SET `name` = 'Crocs Pink S9' WHERE `SKU` = 'CRO-9-PIN'")
-
 }
 
-// updateProduct([], 'CRO-TST-3', 'Crocs Test S13', '60.22', 5)
-updateProduct([], 'CRO-TST-3')
+updateProduct([], 'CRO-BLU-9', 'test crocs', 60.20, 2)
