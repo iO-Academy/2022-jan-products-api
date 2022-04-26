@@ -1,7 +1,4 @@
 const getAllProducts = async (connection) => {
-    let result = await connection.query("SELECT `name`, `price`, `SKU` FROM `products`;")
-    return result
-
     return await connection.query("SELECT `name`, `price`, `SKU` FROM `products`;")
 }
 
@@ -37,7 +34,8 @@ const updateSingleProduct = async(connection, SKU, name, price, stockLevel) => {
     }
 }
 
-
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 module.exports.updateSingleProduct = updateSingleProduct
+
+node_modules/.package-lock.json
