@@ -5,7 +5,6 @@ const getAllProducts = async (connection) => {
 
 const addSingleProduct = async(connection, sku, name, price, stock_level) => {
     return await connection.query('INSERT `products` (`SKU`, `name`, `price`,`stock_level`) VALUES' + `('${sku}', '${name}', '${price}', '${stock_level}');`)
-
 }
 
 
