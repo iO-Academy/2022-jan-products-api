@@ -1,9 +1,15 @@
 const getAllProducts = async (connection) => {
     let result = await connection.query("SELECT `name`, `price`, `SKU` FROM `products`;")
     return result
+
+    return await connection.query("SELECT `name`, `price`, `SKU` FROM `products`;")
 }
 
-const updateProduct = async(connection, SKU, name, price, stockLevel) => {
+const addSingleProduct = async(connection, sku, name, price, stock_level) => {
+    return await connection.query('INSERT `product_lsd` (`SKU`, `name`, `price`,`stock_level`) VALUES' + `(${sku}, ${name}, ${price}, ${stock_level});`)
+}
+
+const updateSingleProduct = async(connection, SKU, name, price, stockLevel) => {
 
     if (typeof SKU === 'string'
         && SKU.length < 15) {
@@ -30,4 +36,7 @@ const updateProduct = async(connection, SKU, name, price, stockLevel) => {
     }
 }
 
-updateProduct([], 'CRO-BLU-9', 'test crocs', 60.20, 2)
+
+module.exports.getAllProducts = getAllProducts
+module.exports.addSingleProduct = addSingleProduct
+module.exports.updateSingleProduct = updateSingleProduct
