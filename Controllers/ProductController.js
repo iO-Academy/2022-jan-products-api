@@ -3,7 +3,7 @@ const ProductService = require("../Services/ProductsService");
 const JsonResponseService = require("../Services/JsonResponseService");
 const {sanitiseSku, sanitiseName, sanitiseStockLevel, sanitisePrice} = require("../Services/SanitiseValidateService");
 
-let getAllProducts = async(req, res) => {
+const getAllProducts = async(req, res) => {
     let connection = await DbService()
     let products = await ProductService.getAllProducts(connection)
     console.log(products)
@@ -29,6 +29,20 @@ let addSingleProduct = async(req, res) => {
 
 }
 
+const getSingleProduct = async(req, res) => {
+    let connection = await DbService()
+    let SKU = req.params.SKU
+    let product = await ProductService.getSingleProduct(connection, SKU)
+    console.log(product)
+    product.length > 0
+        ? apiResponse = JsonResponseService(product, true, 'Success', 200)
+        : apiResponse = JsonResponseService()
+
+    res.json(apiResponse)
+}
+
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
+module.exports.getSingleProduct = getSingleProduct
+
 
