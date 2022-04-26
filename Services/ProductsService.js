@@ -12,6 +12,7 @@ const addSingleProduct = async(connection, sku, name, price, stock_level) => {
 const updateSingleProduct = async(connection, SKU, name, price, stockLevel) => {
 
     if (typeof SKU === 'string'
+        && SKU.length > 0
         && SKU.length < 15) {
 
         let query = 'UPDATE `products` SET '
