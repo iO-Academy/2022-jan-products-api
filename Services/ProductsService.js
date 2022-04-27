@@ -15,7 +15,7 @@ const getSingleProduct = async (connection, sku) => {
     return response
 }
 
-const updateSingleProduct = async (connection, sku, stock_level) => {
+const updateSingleStockLevel = async (connection, sku, stock_level) => {
     return await connection.query('UPDATE `products` SET `stock_level` = ' + `'${stock_level}'` + 'WHERE `SKU` = ' + `'${sku}'`)
 }
 
@@ -23,5 +23,5 @@ const updateSingleProduct = async (connection, sku, stock_level) => {
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 module.exports.getSingleProduct = getSingleProduct
-module.exports.updateSingleProduct = updateSingleProduct
+module.exports.updateSingleStockLevel = updateSingleStockLevel
 
