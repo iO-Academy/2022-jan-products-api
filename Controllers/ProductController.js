@@ -13,8 +13,6 @@ const getAllProducts = async(req, res) => {
     res.json(apiResponse)
 }
 
-
-
 const addSingleProduct = async(req, res) => {
     const connection = await DbService()
     const sku = DataCheckers.sanitiseSku(req.body.SKU)
@@ -31,8 +29,8 @@ const addSingleProduct = async(req, res) => {
 
 const getSingleProduct = async(req, res) => {
     const connection = await DbService()
-    const SKU = req.params.SKU
-    const product = await ProductService.getSingleProduct(connection, SKU)
+    const sku = DataCheckers.sanitiseSku(req.params.SKU)
+    const product = await ProductService.getSingleProduct(connection, sku)
     let apiResponse
     product.length > 0
         ? apiResponse = JsonResponseService(product, true, 'Success', 200)
