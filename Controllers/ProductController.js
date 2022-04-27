@@ -43,8 +43,16 @@ const getSingleProduct = async(req, res) => {
     res.json(apiResponse)
 }
 
+const updateStockLevel = async(re, res) => {
+    const connection = await DbService()
+    const SKU = req.params.SKU
+    const stock_level = 1
+    const updateProduct = await ProductService.updateSingleProduct(connection, SKU, stock_level)
+}
+
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 module.exports.getSingleProduct = getSingleProduct
+module.exports.updateStockLevel = updateStockLevel
 
 

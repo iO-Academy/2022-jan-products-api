@@ -1,3 +1,5 @@
+const DataCheckers = require('../Services/SanitiseValidateService')
+
 const getAllProducts = async (connection) => {
     return await connection.query("SELECT `name`, `price`, `SKU` FROM `products`;")
 }
@@ -13,8 +15,13 @@ const getSingleProduct = async (connection, sku) => {
     return response
 }
 
+// const updateSingleProduct = async (connection, SKU, stock_level) => {
+//
+// }
+
 
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 module.exports.getSingleProduct = getSingleProduct
+// module.exports.updateSingleProduct = updateSingleProduct
 
