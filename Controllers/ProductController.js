@@ -20,15 +20,12 @@ const addSingleProduct = async(req, res) => {
     const name = DataCheckers.sanitiseName(req.body.name)
     const price = DataCheckers.sanitisePrice(req.body.price)
     const stock_level = DataCheckers.sanitiseStockLevel(req.body.stock_level)
-    const apiResponse = async () => {
         if (sku && name && price && stock_level) {
             const products = await ProductService.addSingleProduct(connection, sku, name, price, stock_level)
-            return JsonResponseService(products, true, 'Success', 201)
+            res.json(JsonResponseService(products, true, 'Success', 201))
         } else {
-            return JsonResponseService()
+            res.json(JsonResponseService())
         }
-    }
-    res.json(apiResponse)
 }
 
 module.exports.getAllProducts = getAllProducts
