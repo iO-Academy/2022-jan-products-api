@@ -1,3 +1,4 @@
+const {response} = require("express");
 const getAllProducts = async (connection) => {
     return await connection.query("SELECT `name`, `price`, `SKU` FROM `products`;")
 }
@@ -12,11 +13,11 @@ const getSingleProduct = async (connection, SKU) => {
         const normaliseString = SKU.toUpperCase()
         let response
         if (normaliseString.length > 11 || normaliseString.length < 9){
-            response = 'Enter a valid SKU'
+            response = ''
         } else {
             regex.test(SKU)
-                ? response = await connection.query('SELECT `SKU`, `name`, `price`, `stock_level` FROM `products` WHERE `SKU` = "' + normaliseString + '"')
-                : response = 'Enter a valid SKU'
+                ? response = await connection.query('SELECT `SKU`, `name`, `price`, `stock_level` FROM `products` WHERE `SKU` =' + `'${normaliseString}'`)
+                : response = ''
         }
         return response
     }

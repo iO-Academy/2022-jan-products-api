@@ -4,40 +4,40 @@ const JsonResponseService = require("../Services/JsonResponseService");
 const {sanitiseSku, sanitiseName, sanitiseStockLevel, sanitisePrice} = require("../Services/SanitiseValidateService");
 
 const getAllProducts = async(req, res) => {
-    let connection = await DbService()
-    let products = await ProductService.getAllProducts(connection)
-    console.log(products)
+    const connection = await DbService()
+    const products = await ProductService.getAllProducts(connection)
+    let apiResponse
     products.length > 0
         ? apiResponse = JsonResponseService(products, true, 'Success', 200)
         : apiResponse = JsonResponseService()
     res.json(apiResponse)
 }
 
-let addSingleProduct = async(req, res) => {
-    let connection = await DbService()
-    let sku = sanitiseSku(req.body.SKU)
-    let name = sanitiseName(req.body.name)
-    let price = sanitisePrice(req.body.price)
-    let stock_level = sanitiseStockLevel(req.body.stock_level)
+const addSingleProduct = async(req, res) => {
+    const connection = await DbService()
+    const sku = sanitiseSku(req.body.SKU)
+    const name = sanitiseName(req.body.name)
+    const price = sanitisePrice(req.body.price)
+    const stock_level = sanitiseStockLevel(req.body.stock_level)
+    let apiResponse
     if (sku && name && price && stock_level) {
-        let products = await ProductService.addSingleProduct(connection, sku, name, price, stock_level)
-        apiResponse = JsonResponseService(products, true, 'Success', 201)
+        const products = await ProductService.addSingleProduct(connection, sku, name, price, stock_level)
+         apiResponse = JsonResponseService(products, true, 'Success', 201)
     } else {
-        apiResponse = JsonResponseService()
+         apiResponse = JsonResponseService()
     }
     res.json(apiResponse)
 
 }
 
 const getSingleProduct = async(req, res) => {
-    let connection = await DbService()
-    let SKU = req.params.SKU
-    let product = await ProductService.getSingleProduct(connection, SKU)
-    console.log(product)
+    const connection = await DbService()
+    const SKU = req.params.SKU
+    const product = await ProductService.getSingleProduct(connection, SKU)
+    let apiResponse
     product.length > 0
         ? apiResponse = JsonResponseService(product, true, 'Success', 200)
         : apiResponse = JsonResponseService()
-
     res.json(apiResponse)
 }
 
