@@ -50,7 +50,7 @@ const updateStockLevel = async(req, res) => {
     const product = await ProductService.updateSingleStockLevel(connection, sku, stock_level)
     let apiResponse
     product.affectedRows > 0
-        ? apiResponse = JsonResponseService(product, true, 'Success', 200)
+        ? apiResponse = JsonResponseService(product, true, 'Success', 201)
         : apiResponse = JsonResponseService()
     res.json(apiResponse)
 }
