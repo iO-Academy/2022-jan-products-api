@@ -9,7 +9,7 @@ const addSingleProduct = async(connection, sku, name, price, stock_level) => {
 const getSingleProduct = async (connection, sku) => {
     let response
     sku ? response = await connection.query('SELECT `SKU`, `name`, `price`, `stock_level` FROM `products` WHERE `SKU` =' + `'${sku}' LIMIT 1`)
-        : response = ''
+        : response = false
     return response
 }
 
