@@ -5,7 +5,7 @@ function routes(app) {
     app.post('/products', ProductController.addSingleProduct)
     app.get('/products/:SKU', ProductController.getSingleProduct)
     app.delete('/products/:SKU', ProductController.deleteSingleProduct)
-
+    app.put('/products/:SKU', ProductController.updateStockLevel)
 }
 
 module.exports = routes;
