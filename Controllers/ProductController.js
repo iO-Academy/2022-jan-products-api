@@ -1,40 +1,20 @@
 const DbService = require("../Services/DbService");
 const ProductService = require("../Services/ProductsService");
 const JsonResponseService = require("../Services/JsonResponseService");
-<<<<<<< HEAD
 const {sanitiseSku, sanitiseName, sanitiseStockLevel, sanitisePrice} = require("../Services/SanitiseValidateService");
-
-let getAllProducts = async(req, res) => {
-    let connection = await DbService()
-    let products = await ProductService.getAllProducts(connection)
-=======
 const DataCheckers = require("../Services/SanitiseValidateService");
 
 const getAllProducts = async(req, res) => {
     const connection = await DbService()
     const products = await ProductService.getAllProducts(connection)
     let apiResponse
->>>>>>> main
     products.length > 0
         ? apiResponse = JsonResponseService(products, true, 'Success', 200)
         : apiResponse = JsonResponseService()
     res.json(apiResponse)
 }
 
-<<<<<<< HEAD
-let addSingleProduct = async(req, res) => {
-    let connection = await DbService()
-    let sku = sanitiseSku(req.body.SKU)
-    let name = sanitiseName(req.body.name)
-    let price = sanitisePrice(req.body.price)
-    let stock_level = sanitiseStockLevel(req.body.stock_level)
-    if (sku && name && price && stock_level) {
-        let products = await ProductService.addSingleProduct(connection, sku, name, price, stock_level)
-        apiResponse = JsonResponseService(products, true, 'Success', 201)
-    } else {
-        apiResponse = JsonResponseService()
-    }
-=======
+
 const addSingleProduct = async(req, res) => {
     const connection = await DbService()
     const sku = DataCheckers.sanitiseSku(req.body.SKU)
@@ -74,16 +54,58 @@ const updateStockLevel = async(req, res) => {
     product.affectedRows > 0
         ? apiResponse = JsonResponseService(product, true, 'Success', 201)
         : apiResponse = JsonResponseService()
->>>>>>> main
     res.json(apiResponse)
+}
+
+const updateSingleProduct = async (req, res) => {
+    const connection = await DbService()
+    const sku = DataCheckers.sanitiseSku(req.params.SKU)
+    const stockLevel = DataCheckers.sanitiseStockLevel(req.body.stock_level)
+    const name = DataCheckers.sanitiseName(req.body.name)
+    const price = DataCheckers.sanitisePrice(req.body.price)
+
+    if (sku) {
+        let apiResponse
+        let updateCounter = 0
+        let query = 'UPDATE `products` SET '
+
+        if (name) {
+            query += '`name` = ' + "'" + name + "' , "
+            updateCounter++
+        }
+        if (price) {
+            query += '`price` = ' + "'" + price + "' , "
+            updateCounter++
+        }
+        if (stockLevel) {
+            query += '`stock_level` = ' + "'" + stockLevel + "' , "
+            updateCounter++
+        }
+        query = query.substring(0, (query.length - 2))
+        query += 'WHERE `SKU` = ' + "'" + sku + "'"
+
+        if (updateCounter > 0) {
+            const product = await ProductService.updateSingleProduct(connection,query)
+            apiResponse = JsonResponseService(product, true, 'Success', 201)
+        } else {
+            apiResponse = JsonResponseService()
+        }
+        res.json(apiResponse)
+    } else {
+        res.json(JsonResponseService())
+    }
+
+}
+
+const invalidRoute = (req, res) => {
+    res.json(JsonResponseService())
 }
 
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
-<<<<<<< HEAD
-=======
 module.exports.getSingleProduct = getSingleProduct
 module.exports.updateStockLevel = updateStockLevel
+module.exports.updateSingleProduct = updateSingleProduct
+module.exports.invalidRoute = invalidRoute
 
->>>>>>> main
 

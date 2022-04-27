@@ -1,8 +1,5 @@
 const JsonResponseService = require('../Services/JsonResponseService')
-<<<<<<< HEAD
-=======
 const DataCheckers = require('../Services/SanitiseValidateService')
->>>>>>> main
 
 describe('JsonResponse', () => {
 
@@ -14,10 +11,7 @@ describe('JsonResponse', () => {
                 'status': 500
             })
         })
-<<<<<<< HEAD
-=======
 
->>>>>>> main
     test('JsonResponse success', () => {
         const data =
             [{
