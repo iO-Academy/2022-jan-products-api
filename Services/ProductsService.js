@@ -9,7 +9,7 @@ const addSingleProduct = async(connection, sku, name, price, stock_level) => {
 const getSingleProduct = async (connection, SKU) => {
     const verifiedSKU = async (SKU) => {
         const regex = /[A-Za-z]{3}-[0-9A-Za-z]{1,3}-[A-Za-z]{3}/
-        let specChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+        const specChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
         const normaliseString = SKU.toUpperCase()
         let response
         if (normaliseString.length > 11 || normaliseString.length < 9 && specChar.test(normaliseString)){
