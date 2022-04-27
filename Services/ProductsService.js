@@ -15,6 +15,10 @@ const getSingleProduct = async (connection, sku) => {
     return response
 }
 
+const deleteSingleProduct = async (connection, sku) =>
+{
+    return await connection.query('DELETE FROM `products` WHERE `SKU` =' + `'${sku}';`)
+
 const updateSingleStockLevel = async (connection, sku, stock_level) => {
     let response
     sku && stock_level ?
@@ -24,8 +28,10 @@ const updateSingleStockLevel = async (connection, sku, stock_level) => {
 }
 
 
+module.exports.deleteSingleProduct = deleteSingleProduct
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 module.exports.getSingleProduct = getSingleProduct
+module.exports.deleteSingleProduct = deleteSingleProduct
 module.exports.updateSingleStockLevel = updateSingleStockLevel
 
