@@ -28,6 +28,14 @@ const addSingleProduct = async(req, res) => {
         }
 }
 
+const deleteSingleProduct = async(req, res) => {
+    const connection = await DbService()
+
+}
+
+
+
+module.exports.deleteSingleProduct = deleteSingleProduct
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 
