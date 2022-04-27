@@ -45,7 +45,16 @@ const getSingleProduct = async(req, res) => {
 
 const deleteSingleProduct = async(req, res) => {
     const connection = await DbService()
-
+    const sku = DataCheckers.sanitiseSku(req.params.SKU)
+    const singleProduct = await ProductService.getSingleProduct(connection, sku)
+    const deleteProduct = await ProductService.deleteSingleProduct(connection, sku)
+    let apiResponse
+    if (singleProduct.length !== 0 && sku) {
+        apiResponse = JsonResponseService(deleteProduct, true, 'Success', 204)
+    } else {
+        apiResponse = JsonResponseService()
+    }
+    res.json(apiResponse)
 }
 
 module.exports.deleteSingleProduct = deleteSingleProduct

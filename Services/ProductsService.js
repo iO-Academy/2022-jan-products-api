@@ -13,12 +13,10 @@ const getSingleProduct = async (connection, sku) => {
     return response
 }
 
-
-const deleteSingleProduct = async(connection, sku, name, price, stock_level) =>
+const deleteSingleProduct = async(connection, sku) =>
 {
-    return await connection.query('INSERT `products` (`SKU`, `name`, `price`,`stock_level`) VALUES' + `('${sku}', '${name}', '${price}', '${stock_level}');`)
+    return await connection.query('DELETE FROM `products` WHERE `SKU` =' + `'${sku}';`)
 }
-
 
 
 module.exports.deleteSingleProduct = deleteSingleProduct
