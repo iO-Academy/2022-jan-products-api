@@ -1,4 +1,5 @@
 const JsonResponseService = require('../Services/JsonResponseService')
+const DataCheckers = require('../Services/SanitiseValidateService')
 
 describe('JsonResponse', () => {
 
@@ -10,6 +11,7 @@ describe('JsonResponse', () => {
                 'status': 500
             })
         })
+
     test('JsonResponse success', () => {
         const data =
             [{

@@ -1,7 +1,7 @@
 const DbService = require("../Services/DbService");
 const ProductService = require("../Services/ProductsService");
 const JsonResponseService = require("../Services/JsonResponseService");
-const {sanitiseSku, sanitiseName, sanitiseStockLevel, sanitisePrice} = require("../Services/SanitiseValidateService");
+const DataCheckers = require("../Services/SanitiseValidateService");
 
 const getAllProducts = async(req, res) => {
     const connection = await DbService()
@@ -13,21 +13,20 @@ const getAllProducts = async(req, res) => {
     res.json(apiResponse)
 }
 
+
+
 const addSingleProduct = async(req, res) => {
     const connection = await DbService()
-    const sku = sanitiseSku(req.body.SKU)
-    const name = sanitiseName(req.body.name)
-    const price = sanitisePrice(req.body.price)
-    const stock_level = sanitiseStockLevel(req.body.stock_level)
-    let apiResponse
-    if (sku && name && price && stock_level) {
-        const products = await ProductService.addSingleProduct(connection, sku, name, price, stock_level)
-         apiResponse = JsonResponseService(products, true, 'Success', 201)
-    } else {
-         apiResponse = JsonResponseService()
-    }
-    res.json(apiResponse)
-
+    const sku = DataCheckers.sanitiseSku(req.body.SKU)
+    const name = DataCheckers.sanitiseName(req.body.name)
+    const price = DataCheckers.sanitisePrice(req.body.price)
+    const stock_level = DataCheckers.sanitiseStockLevel(req.body.stock_level)
+        if (sku && name && price && stock_level) {
+            const products = await ProductService.addSingleProduct(connection, sku, name, price, stock_level)
+            res.json(JsonResponseService(products, true, 'Success', 201))
+        } else {
+            res.json(JsonResponseService())
+        }
 }
 
 const getSingleProduct = async(req, res) => {

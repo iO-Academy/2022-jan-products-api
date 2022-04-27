@@ -1,4 +1,3 @@
-const {response} = require("express");
 const getAllProducts = async (connection) => {
     return await connection.query("SELECT `name`, `price`, `SKU` FROM `products`;")
 }
