@@ -43,8 +43,21 @@ const getSingleProduct = async(req, res) => {
     res.json(apiResponse)
 }
 
+const updateStockLevel = async(req, res) => {
+    const connection = await DbService()
+    const sku = DataCheckers.sanitiseSku(req.params.SKU)
+    const stock_level = DataCheckers.sanitiseStockLevel(req.body.stock_level)
+    const product = await ProductService.updateSingleStockLevel(connection, sku, stock_level)
+    let apiResponse
+    product.affectedRows > 0
+        ? apiResponse = JsonResponseService(product, true, 'Success', 201)
+        : apiResponse = JsonResponseService()
+    res.json(apiResponse)
+}
+
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 module.exports.getSingleProduct = getSingleProduct
+module.exports.updateStockLevel = updateStockLevel
 
 
