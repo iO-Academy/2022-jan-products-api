@@ -1,38 +1,38 @@
-## Leafy Sea Dragon Products RESTful API
+# Leafy Sea Dragon Products RESTful API
 
-#Package Requirements
+##Package Requirements
 
-#Local Setup
+##Local Setup
 
-#Live Setup
+##Live Setup
 project template repo
 
-##Add Products
+###Add Products
     
-    #Success Response
-    #Error Response
+####Success Response
+####Error Response
 
-##View All Products
+###View All Products
 
-    #Success Response
-    #Error Response
+####Success Response
+####Error Response
 
-##View Single Products
+###View Single Products
 
-    #Success Response
-    #Error Response
+####Success Response
+####Error Response
 
-##Delete Products
+###Delete Products
 
-    #Success Response
-    #Error Response
+####Success Response
+####Error Response
 
-##Edit Products
+###Edit Products
 
-    #Success Response
-    #Error Response
+####Success Response
+####Error Response
 
-##Update Stock Level
+###Update Stock Level
 
-    #Success Response
-    #Error Response
+####Success Response
+####Error Response
