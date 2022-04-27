@@ -45,7 +45,7 @@ const getSingleProduct = async(req, res) => {
 
 const updateStockLevel = async(req, res) => {
     const connection = await DbService()
-    const sku = DataCheckers.sanitiseSku(req.body.SKU)
+    const sku = DataCheckers.sanitiseSku(req.params.SKU)
     const stock_level = DataCheckers.sanitiseStockLevel(req.body.stock_level)
     const product = await ProductService.updateSingleStockLevel(connection, sku, stock_level)
     let apiResponse
