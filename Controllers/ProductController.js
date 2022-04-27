@@ -6,11 +6,10 @@ const DataCheckers = require("../Services/SanitiseValidateService");
 const getAllProducts = async(req, res) => {
     const connection = await DbService()
     const products = await ProductService.getAllProducts(connection)
-
-    const apiResponse = products.length > 0
-        ? JsonResponseService(products, true, 'Success', 200)
-        : JsonResponseService()
-
+    let apiResponse
+    products.length > 0
+        ? apiResponse = JsonResponseService(products, true, 'Success', 200)
+        : apiResponse = JsonResponseService()
     res.json(apiResponse)
 }
 
@@ -28,6 +27,19 @@ const addSingleProduct = async(req, res) => {
         }
 }
 
+const getSingleProduct = async(req, res) => {
+    const connection = await DbService()
+    const sku = DataCheckers.sanitiseSku(req.params.SKU)
+    const product = await ProductService.getSingleProduct(connection, sku)
+    let apiResponse
+    product.length > 0
+        ? apiResponse = JsonResponseService(product, true, 'Success', 200)
+        : apiResponse = JsonResponseService()
+    res.json(apiResponse)
+}
+
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
+module.exports.getSingleProduct = getSingleProduct
+
 
