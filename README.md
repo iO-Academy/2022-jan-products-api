@@ -1,5 +1,7 @@
 # Leafy Sea Dragon Products RESTful API
-![LeafySeaDragon](https://ronbeckdesigns.com/wp/wp-content/uploads/2019/04/Leafy-Sea-Dragon-Photo_-NaSser-Alomairi-1500-1000.jpg)
+(https://ronbeckdesigns.com/wp/wp-content/uploads/2019/04/Leafy-Sea-Dragon-Photo_-NaSser-Alomairi-1500-1000.jpg)
+
+Welcome to our RESTful API where you can find all of your stock management needs in one place.
 
 ## Package Requirements
 
