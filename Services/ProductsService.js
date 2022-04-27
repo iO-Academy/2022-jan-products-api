@@ -16,7 +16,11 @@ const getSingleProduct = async (connection, sku) => {
 }
 
 const updateSingleStockLevel = async (connection, sku, stock_level) => {
-    return await connection.query('UPDATE `products` SET `stock_level` = ' + `'${stock_level}'` + 'WHERE `SKU` = ' + `'${sku}'`)
+    let response
+    sku && stock_level ?
+        response = await connection.query('UPDATE `products` SET `stock_level` = ' + `'${stock_level}'` + 'WHERE `SKU` = ' + `'${sku}'`)
+        : response = false
+    return response
 }
 
 
