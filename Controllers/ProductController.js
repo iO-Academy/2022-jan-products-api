@@ -7,9 +7,11 @@ const getAllProducts = async(req, res) => {
     const connection = await DbService()
     const products = await ProductService.getAllProducts(connection)
     let apiResponse
-    products.length > 0
-        ? apiResponse = JsonResponseService(products, true, 'Success', 200)
-        : apiResponse = JsonResponseService()
+    if (products.length > 0) {
+        apiResponse = JsonResponseService(products, true, 'Success', 200)
+    } else {
+        apiResponse = JsonResponseService()
+    }
     res.json(apiResponse)
 }
 
@@ -37,9 +39,11 @@ const getSingleProduct = async(req, res) => {
     const sku = DataCheckers.sanitiseSku(req.params.SKU)
     const product = await ProductService.getSingleProduct(connection, sku)
     let apiResponse
-    product.length > 0
-        ? apiResponse = JsonResponseService(product, true, 'Success', 200)
-        : apiResponse = JsonResponseService()
+    if (product.length > 0) {
+        apiResponse = JsonResponseService(product, true, 'Success', 200)
+    } else {
+        apiResponse = JsonResponseService()
+    }
     res.json(apiResponse)
 }
 
@@ -57,9 +61,10 @@ const deleteSingleProduct = async(req, res) => {
     res.json(apiResponse)
 }
 
-module.exports.deleteSingleProduct = deleteSingleProduct
+
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 module.exports.getSingleProduct = getSingleProduct
+module.exports.deleteSingleProduct = deleteSingleProduct
 
 

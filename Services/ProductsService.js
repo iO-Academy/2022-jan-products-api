@@ -13,7 +13,7 @@ const getSingleProduct = async (connection, sku) => {
     return response
 }
 
-const deleteSingleProduct = async(connection, sku) =>
+const deleteSingleProduct = async (connection, sku) =>
 {
     return await connection.query('DELETE FROM `products` WHERE `SKU` =' + `'${sku}';`)
 }
