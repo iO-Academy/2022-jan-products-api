@@ -41,6 +41,10 @@ const DataCheckers = {
         } else {
             return false
         }
+    },
+
+    availableSKU: (SKU, connection) => {
+
     }
 }
 
