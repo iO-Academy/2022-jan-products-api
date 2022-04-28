@@ -13,4 +13,3 @@ const JsonResponse = (
 }
 
 module.exports = JsonResponse
-
