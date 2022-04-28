@@ -73,11 +73,54 @@ const updateStockLevel = async(req, res) => {
     res.json(apiResponse)
 }
 
+const updateSingleProduct = async (req, res) => {
+    const connection = await DbService()
+    const sku = DataCheckers.sanitiseSku(req.params.SKU)
+    const stockLevel = DataCheckers.sanitiseStockLevel(req.body.stock_level)
+    const name = DataCheckers.sanitiseName(req.body.name)
+    const price = DataCheckers.sanitisePrice(req.body.price)
+    const product = await ProductService.getSingleProduct(connection, sku)
+
+    if (sku && product.length > 0) {
+        let apiResponse
+        let updateCounter = 0
+        let query = 'UPDATE `products` SET '
+
+        if (name) {
+            query += '`name` = ' + "'" + name + "' , "
+            updateCounter++
+        }
+        if (price) {
+            query += '`price` = ' + "'" + price + "' , "
+            updateCounter++
+        }
+        if (stockLevel) {
+            query += '`stock_level` = ' + "'" + stockLevel + "' , "
+            updateCounter++
+        }
+        query = query.substring(0, (query.length - 2))
+        query += 'WHERE `SKU` = ' + "'" + sku + "'"
+
+        if (updateCounter > 0) {
+            const product = await ProductService.updateSingleProduct(connection,query)
+            apiResponse = JsonResponseService(product, true, 'Success', 201)
+        } else {
+            apiResponse = JsonResponseService()
+        }
+        res.json(apiResponse)
+    } else {
+        res.json(JsonResponseService())
+    }
+}
+
+const invalidRoute = (req, res) => {
+    res.json(JsonResponseService())
+}
+
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 module.exports.getSingleProduct = getSingleProduct
 module.exports.deleteSingleProduct = deleteSingleProduct
 module.exports.updateStockLevel = updateStockLevel
-
-
-
+module.exports.updateSingleProduct = updateSingleProduct
+module.exports.invalidRoute = invalidRoute
