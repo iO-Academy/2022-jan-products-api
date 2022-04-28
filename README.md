@@ -127,7 +127,6 @@ This API supports the following HTTP requests:
 
 ``500``
 <h5>Response:</h5>
-Response:
 
 	{
 
@@ -449,10 +448,82 @@ Response:
 	}
 </details>
 
-#### Success Response
-#### Error Response
-
 ### Update Stock Level
 
-#### Success Response
-#### Error Response
+  <details>
+<h3>Route</h3>
+<h5>URL:</h5> 	
+
+``/products/stock/{SKU}``
+
+<h5>Method:</h5>
+
+``PUT``
+<h5>URL Params:</h5>
+
+``/stock/:SKU``
+<h5>Optional URL Params:</h5>
+
+``N/A``
+<h5>Example URL:</h5>
+
+``/products/stock/CRO-9-PIN``
+<h5>Required PUT parameters:</h5>
+
+``SKU, stock_level``
+
+<h3>Success Response</h3>
+<h5>Code:</h5>
+
+``201``
+<h5>Response:</h5>
+
+
+	{
+
+		"success": true,
+
+		"message": "Success",
+
+		"status": 201,
+
+		"data": {
+
+			"fieldCount": 0,
+
+			"affectedRows": 1,
+
+			"insertId": 0,
+
+			"serverStatus": 2,
+
+			"warningCount": 0,
+
+			"message": "(Rows matched: 1 Changed: 1 Warnings: 0",
+
+			"protocol41": true,
+
+			"changedRows": 1
+
+		}
+
+	}
+
+<h3>Error Response</h3>
+<h5>Code:</h5>
+
+``500``
+<h5>Response:</h5>
+
+	{
+
+		"success": false,
+
+		"message": "Error",
+
+		"status": 500,
+
+		"data": []
+
+	}
+</details>
