@@ -46,11 +46,6 @@ That is it, now you can enjoy managing your stock items.
 ### Instructions
 	
 #### Testing
-	
-Create a ``__test__`` directory at the root of the project.
-Create a test file imitating the document naming of the tested function's
-
-E.g.	``filename.test.js``
 
 Run the Jest test from the root of the App
 	
@@ -83,7 +78,7 @@ It **must be unique**, as the code won't allow submission of the same SKU twice
 
 
 
-### Add Products
+### Add Product
 <details>
 <h3>Route</h3>
 <h5>URL:</h5> 	
@@ -229,7 +224,7 @@ It **must be unique**, as the code won't allow submission of the same SKU twice
 	}
 </details>
 
-### View Single Products
+### View Single Product
 
 <details>
 <h3>Route</h3>
@@ -304,7 +299,7 @@ It **must be unique**, as the code won't allow submission of the same SKU twice
 	}
 </details>
 
-### Delete Products
+### Delete Product
 
 <details>
 <h3>Route</h3>
@@ -383,7 +378,7 @@ It **must be unique**, as the code won't allow submission of the same SKU twice
 	}
 </details>
 
-### Edit Products
+### Edit Product
 
 <details>
 <h3>Route</h3>
@@ -466,7 +461,7 @@ It **must be unique**, as the code won't allow submission of the same SKU twice
 	}
 </details>
 
-### Update Stock Level
+### Update Single Stock Level
 
   <details>
 <h3>Route</h3>
