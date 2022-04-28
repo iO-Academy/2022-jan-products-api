@@ -54,6 +54,21 @@ nodemon start.js
 The API will now be accessible at ``http://localhost:3000/``.
 
 That is it, now you can enjoy managing your stock items.
+	
+### Instructions
+	
+#### Testing
+	
+Create a ``__test__`` directory at the root of the project.
+Create a test file imitating the document naming of the tested function's
+
+E.g.	``filename.test.js``
+
+Run the Jest test from the root of the App
+	
+```bash
+npm run test	
+```
 </p>  
 
 
