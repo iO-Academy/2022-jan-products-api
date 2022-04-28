@@ -60,7 +60,6 @@ npm run test
 
 
 ## API Documentation
-This API supports the following HTTP requests:
 
 #### Good to Know:
 
@@ -76,7 +75,9 @@ AND
 
 It **must be unique**, as the code won't allow submission of the same SKU twice
 
+#### HTTP Requests
 
+This API supports the following HTTP requests:
 
 ### Add Product
 <details>
