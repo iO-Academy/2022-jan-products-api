@@ -6,6 +6,10 @@ Welcome to our RESTful API where you can find all of your stock management needs
 
 Authors: Luke Grayland, Gabriel Rowan, and Samuel Shanagher
 
+## API Documentation
+
+#### Good to Know:
+
 <details>  
 <summary>Run API Locally</summary>  
 <h3>Local Setup</h3>
@@ -56,12 +60,6 @@ npm run test
 
 
 </details>  
-
-
-
-## API Documentation
-
-#### Good to Know:
 
 ##### The SKU requires the code to be:
 
