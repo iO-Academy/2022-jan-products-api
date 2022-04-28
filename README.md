@@ -63,6 +63,23 @@ That is it, now you can enjoy managing your stock items.
 
 ## API Documentation
 This API supports the following HTTP requests:
+
+#### Good to Know:
+
+##### The SKU requires the code to be:
+
+*first 3 characters of item - item size (1 - 3 characters) - first 3 characters of item colour*
+
+E.g.
+
+Crocs Blue Size 9		=		``CRO-9-BLU``
+
+AND
+
+It **must be unique**, as the code won't allow submission of the same SKU twice
+
+
+
 ### Add Products
 <details>
 <h3>Route</h3>
