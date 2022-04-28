@@ -1,5 +1,5 @@
 const getAllProducts = async (connection) => {
-    return await connection.query("SELECT `name`, `price`, `SKU` FROM `products`;")
+    return await connection.query("SELECT `id`, `name`, `price`, `SKU` FROM `products`;")
 }
 
 const addSingleProduct = async(connection, sku, name, price, stock_level) => {
