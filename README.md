@@ -75,7 +75,7 @@ AND
 
 It **must be unique**, as the code won't allow submission of the same SKU twice
 
-#### HTTP Requests
+## HTTP Requests
 
 This API supports the following HTTP requests:
 
