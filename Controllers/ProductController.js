@@ -14,10 +14,10 @@ const getAllProducts = async(req, res) => {
 
 const addSingleProduct = async(req, res) => {
     const connection = await DbService()
-    const sku = DataCheckers.sanitiseSku(req.body.SKU)
-    const name = DataCheckers.sanitiseName(req.body.name)
-    const price = DataCheckers.sanitisePrice(req.body.price)
-    const stock_level = DataCheckers.sanitiseStockLevel(req.body.stock_level)
+    const sku = DataCheckers.sanitiseAndValidateSku(req.body.SKU)
+    const name = DataCheckers.sanitiseAndValidateName(req.body.name)
+    const price = DataCheckers.sanitiseAndValidatePrice(req.body.price)
+    const stock_level = DataCheckers.sanitiseAndValidateStockLevel(req.body.stock_level)
     const tableData = await ProductService.getSingleProduct(connection, sku)
     const products = await ProductService.addSingleProduct(connection, sku, name, price, stock_level)
     let apiResponse = tableData.length === 0 && sku && name && price && stock_level
@@ -28,7 +28,7 @@ const addSingleProduct = async(req, res) => {
 
 const getSingleProduct = async(req, res) => {
     const connection = await DbService()
-    const sku = DataCheckers.sanitiseSku(req.params.SKU)
+    const sku = DataCheckers.sanitiseAndValidateSku(req.params.SKU)
     const product = await ProductService.getSingleProduct(connection, sku)
     let apiResponse = product.length > 0
         ? JsonResponseService(product, true, 'Success', 200)
@@ -38,7 +38,7 @@ const getSingleProduct = async(req, res) => {
 
 const deleteSingleProduct = async(req, res) => {
     const connection = await DbService()
-    const sku = DataCheckers.sanitiseSku(req.params.SKU)
+    const sku = DataCheckers.sanitiseAndValidateSku(req.params.SKU)
     const singleProduct = await ProductService.getSingleProduct(connection, sku)
     const deleteProduct = singleProduct.length !== 0
         ? await ProductService.deleteSingleProduct(connection, sku)
@@ -51,8 +51,8 @@ const deleteSingleProduct = async(req, res) => {
 
 const updateStockLevel = async(req, res) => {
     const connection = await DbService()
-    const sku = DataCheckers.sanitiseSku(req.params.SKU)
-    const stock_level = DataCheckers.sanitiseStockLevel(req.body.stock_level)
+    const sku = DataCheckers.sanitiseAndValidateSku(req.params.SKU)
+    const stock_level = DataCheckers.sanitiseAndValidateStockLevel(req.body.stock_level)
     const singleProduct = await ProductService.getSingleProduct(connection, sku)
     const product = singleProduct.length !== 0
         ? await ProductService.updateSingleStockLevel(connection, sku, stock_level)
@@ -65,10 +65,10 @@ const updateStockLevel = async(req, res) => {
 
 const updateSingleProduct = async (req, res) => {
     const connection = await DbService()
-    const sku = DataCheckers.sanitiseSku(req.params.SKU)
-    const stockLevel = DataCheckers.sanitiseStockLevel(req.body.stock_level)
-    const name = DataCheckers.sanitiseName(req.body.name)
-    const price = DataCheckers.sanitisePrice(req.body.price)
+    const sku = DataCheckers.sanitiseAndValidateSku(req.params.SKU)
+    const stockLevel = DataCheckers.sanitiseAndValidateStockLevel(req.body.stock_level)
+    const name = DataCheckers.sanitiseAndValidateName(req.body.name)
+    const price = DataCheckers.sanitiseAndValidatePrice(req.body.price)
     const product = await ProductService.getSingleProduct(connection, sku)
 
     if (sku && product.length > 0) {

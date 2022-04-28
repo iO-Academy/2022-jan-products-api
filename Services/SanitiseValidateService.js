@@ -1,5 +1,5 @@
 const DataCheckers = {
-    sanitiseSku: (sku) => {
+    sanitiseAndValidateSku: (sku) => {
         const regex = /[A-Za-z]{3}-[0-9A-Za-z]{1,3}-[A-Za-z]{3}/
         if (typeof sku === 'string'
             && sku.length >= 9
@@ -12,7 +12,7 @@ const DataCheckers = {
         }
     },
 
-    sanitiseName: (name) => {
+    sanitiseAndValidateName: (name) => {
         if (typeof name === 'string'
             && name.length > 0
             && name.length < 50) {
@@ -22,7 +22,7 @@ const DataCheckers = {
         }
     },
 
-    sanitisePrice: (price) => {
+    sanitiseAndValidatePrice: (price) => {
         const regex = /^(\d+(\.\d{0,2})?|\.?\d{1,2})$/
         if (regex.test(price)) {
             return parseFloat(price)
@@ -31,7 +31,7 @@ const DataCheckers = {
         }
     },
 
-    sanitiseStockLevel: (stockLevel) => {
+    sanitiseAndValidateStockLevel: (stockLevel) => {
         const regex = /^\d+$/
         if (regex.test(stockLevel)
             && stockLevel.length > 0
