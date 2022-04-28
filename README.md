@@ -6,7 +6,7 @@ Welcome to our RESTful API where you can find all of your stock management needs
 
 Authors: Luke Grayland, Gabriel Rowan, and Samuel Shanagher
 
-## Package Requirements
+## Requirements
 
 ``npm init``			
 create package.json
@@ -25,6 +25,7 @@ creates the test environment locally
 <h3>Local Setup</h3>
 <p>
 Clone this repo:
+
 ```bash
 git clone git@github.com:iO-Academy/2022-jan-products-api.git
 ```
@@ -65,14 +66,26 @@ This API supports the following HTTP requests:
 ### Add Products
 <details>
 <h3>Route</h3>
-<h5>URL:</h5> 	``/products``	
-<h5>Method:</h5> 	``POST``	
-<h5>URL Params:</h5> 	N/A
-<h5>Example URL:</h5> 	``/products``	
-<h5>Required POST Body Data:</h5> 	``SKU, name, price, stock_level``		
+<h5>URL:</h5> 	
+
+``/products``
+
+<h5>Method:</h5>
+
+	POST	
+<h5>URL Params:</h5>
+
+	N/A
+<h5>Example URL:</h5>
+
+	/products	
+<h5>Required POST Body Data:</h5>
+
+	SKU, name, price, stock_level		
 <h3>Success Response</h3>
 <h5>Code:</h5>
-``201``
+
+	201
 <h5>Response:</h5>
 
 
@@ -108,7 +121,8 @@ This API supports the following HTTP requests:
 
 <h3>Error Response</h3>
 <h5>Code:</h5>
-``500``
+
+	500
 <h5>Response:</h5>
 Response:
 
