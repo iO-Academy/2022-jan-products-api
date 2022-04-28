@@ -43,7 +43,7 @@ const generateUpdateProductQuery = (name, price, stockLevel, sku) => {
             updateCounter++
         }
         query = query.substring(0, (query.length - 2))
-        query += 'WHERE `SKU` = ' + "'" + sku + "'"
+        query += 'WHERE `SKU` = ' + `'${sku}'`
     }
 
     return updateCounter > 0 ? query : false
