@@ -1,7 +1,6 @@
 const DbService = require("../Services/DbService");
 const ProductService = require("../Services/ProductsService");
 const JsonResponseService = require("../Services/JsonResponseService");
-const {sanitiseSku, sanitiseName, sanitiseStockLevel, sanitisePrice} = require("../Services/SanitiseValidateService");
 const DataCheckers = require("../Services/SanitiseValidateService");
 
 const getAllProducts = async(req, res) => {
@@ -13,7 +12,6 @@ const getAllProducts = async(req, res) => {
         : apiResponse = JsonResponseService()
     res.json(apiResponse)
 }
-
 
 const addSingleProduct = async(req, res) => {
     const connection = await DbService()
@@ -63,8 +61,9 @@ const updateSingleProduct = async (req, res) => {
     const stockLevel = DataCheckers.sanitiseStockLevel(req.body.stock_level)
     const name = DataCheckers.sanitiseName(req.body.name)
     const price = DataCheckers.sanitisePrice(req.body.price)
+    const product = await ProductService.getSingleProduct(connection, sku)
 
-    if (sku) {
+    if (sku && product.length > 0) {
         let apiResponse
         let updateCounter = 0
         let query = 'UPDATE `products` SET '
