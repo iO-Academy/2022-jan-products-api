@@ -6,20 +6,6 @@ Welcome to our RESTful API where you can find all of your stock management needs
 
 Authors: Luke Grayland, Gabriel Rowan, and Samuel Shanagher
 
-## Requirements
-
-``npm init``			
-create package.json
-
-``npm i express``			
-installs the express framework
-
-``npm i promise-mysql``		
-provides ability to connect to the database connection
-
-``npm i jest --save-dev``		
-creates the test environment locally
-
 <details>  
 <summary>Run API Locally</summary>  
 <h3>Local Setup</h3>
@@ -30,6 +16,8 @@ Clone this repo:
 git clone git@github.com:iO-Academy/2022-jan-products-api.git
 ```
 
+Install packages by typing ``npm i`` in the terminal	
+	
 Once cloned, first install the database stored in ``/lsd_products.sql``. Create a database named `lsd_products`, then open the SQL file in your MySQL GUI.
 
 *You will need to amend the database`user` and `password` to match that of your MySQL DB in the `DbService.js` file*
