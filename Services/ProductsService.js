@@ -25,6 +25,30 @@ const updateSingleStockLevel = async (connection, sku, stock_level) => {
     return response
 }
 
+const generateUpdateProductQuery = (name, price, stockLevel, sku) => {
+    let query = false
+    let updateCounter = 0
+    if(sku){
+        query = 'UPDATE `products` SET '
+        if (name) {
+            query += '`name` = ' + `'${name}' , `
+            updateCounter++
+        }
+        if (price) {
+            query += '`price` = ' + `'${price}' , `
+            updateCounter++
+        }
+        if (stockLevel) {
+            query += '`stock_level` = ' + `'${stockLevel}' , `
+            updateCounter++
+        }
+        query = query.substring(0, (query.length - 2))
+        query += 'WHERE `SKU` = ' + "'" + sku + "'"
+    }
+
+    return updateCounter > 0 ? query : false
+}
+
 const updateSingleProduct = async(connection, query) => {
     return await connection.query(query)
 }
@@ -32,6 +56,9 @@ const updateSingleProduct = async(connection, query) => {
 module.exports.getAllProducts = getAllProducts
 module.exports.addSingleProduct = addSingleProduct
 module.exports.getSingleProduct = getSingleProduct
-module.exports.updateSingleProduct = updateSingleProduct
-module.exports.updateSingleStockLevel = updateSingleStockLevel
 module.exports.deleteSingleProduct = deleteSingleProduct
+module.exports.updateSingleStockLevel = updateSingleStockLevel
+module.exports.generateUpdateProductQuery = generateUpdateProductQuery
+module.exports.updateSingleProduct = updateSingleProduct
+
+

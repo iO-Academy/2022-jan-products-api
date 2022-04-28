@@ -1,81 +1,81 @@
 const DataCheckers = require('../Services/SanitiseValidateService')
 
-describe('sanitiseSku', () => {
+describe('Sanitise & Validate SKU', () => {
 
-    test('Sanitise SKU Failure', () => {
+    test('Sanitise & Validate SKU Failure', () => {
         expect(DataCheckers.sanitiseAndValidateSku()).toBe(false)
     })
 
-    test('Sanitise SKU Success', () => {
+    test('Sanitise & Validate SKU Success', () => {
         expect(DataCheckers.sanitiseAndValidateSku('CRO-9-BLA')).toBe('CRO-9-BLA')
     })
 
-    test('Sanitise SKU Failure', () => {
+    test('Sanitise & Validate SKU Failure', () => {
         expect(DataCheckers.sanitiseAndValidateSku('123456789101112')).toBe(false)
     })
 
-    test('Sanitise SKU Malformed', () => {
+    test('Sanitise & Validate SKU Malformed', () => {
         expect(DataCheckers.sanitiseAndValidateSku([{}])).toBe(false)
     })
 
 })
 
-describe('sanitiseStockLevel', () => {
+describe('Sanitise & Validate Stock Level', () => {
 
-    test('Sanitise Stock Level Failure', () => {
+    test('Sanitise & Validate Stock Level Failure', () => {
         expect(DataCheckers.sanitiseAndValidateStockLevel()).toBe(false)
     })
 
-    test('Sanitise Stock Level Failure', () => {
+    test('Sanitise & Validate Stock Level Failure', () => {
         expect(DataCheckers.sanitiseAndValidateStockLevel(-4)).toBe(false)
     })
 
-    test('Sanitise Stock Level Failure', () => {
+    test('Sanitise & Validate Stock Level Failure', () => {
         expect(DataCheckers.sanitiseAndValidateStockLevel(10001)).toBe(false)
     })
 
-    test('Sanitise Stock Level Success', () => {
+    test('Sanitise & Validate Stock Level Success', () => {
         expect(DataCheckers.sanitiseAndValidateStockLevel('9')).toBe(9)
     })
 
-    test('Sanitise Stock Level Malformed', () => {
+    test('Sanitise & Validate Stock Level Malformed', () => {
         expect(DataCheckers.sanitiseAndValidateStockLevel('test string')).toBe(false)
     })
 })
 
-describe('sanitisePrice', () => {
+describe('Sanitise & Validate Price', () => {
 
-    test('sanitisePrice success', () => {
+    test('Sanitise & Validate Price success', () => {
         expect(DataCheckers.sanitiseAndValidatePrice('50.56')).toBe(50.56)
     })
 
-    test('sanitisePrice Failure', () => {
+    test('Sanitise & Validate Price Failure', () => {
         expect(DataCheckers.sanitiseAndValidatePrice('string')).toBe(false)
     })
 
-    test('sanitisePrice Malformed', () => {
+    test('Sanitise & Validate Price Malformed', () => {
         expect(DataCheckers.sanitiseAndValidatePrice([])).toBe(false)
     })
 })
 
-describe('sanitiseName', () => {
+describe('Sanitise & Validate Name', () => {
 
-    test('sanitiseName success', () => {
+    test('Sanitise & Validate Name success', () => {
         const name = 'Crocs Blue S8'
         expect(DataCheckers.sanitiseAndValidateName(name)).toBe('Crocs Blue S8')
     })
 
-    test('sanitiseName failure too small', () => {
+    test('Sanitise & Validate Name failure too small', () => {
         const name = ''
         expect(DataCheckers.sanitiseAndValidateName(name)).toBe(false)
     })
 
-    test('sanitiseName failure too big', () => {
+    test('Sanitise & Validate Name failure too big', () => {
         const name = 'UyfAY4U03tPjopfit08NAafpJyxdC3tenaqs1VmgKsU3Wuiyo0S'
         expect(DataCheckers.sanitiseAndValidateName(name)).toBe(false)
     })
 
-    test('sanitiseName malformed', () => {
+    test('Sanitise & Validate Name malformed', () => {
         const name = 1234
         expect(DataCheckers.sanitiseAndValidateName(name)).toBe(false)
     })
