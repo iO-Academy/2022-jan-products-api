@@ -1,5 +1,4 @@
 const JsonResponseService = require('../Services/JsonResponseService')
-const DataCheckers = require('../Services/SanitiseValidateService')
 
 describe('JsonResponse', () => {
 
