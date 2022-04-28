@@ -111,7 +111,6 @@ const updateSingleProduct = async (req, res) => {
     } else {
         res.json(JsonResponseService())
     }
-
 }
 
 const invalidRoute = (req, res) => {
@@ -125,6 +124,3 @@ module.exports.deleteSingleProduct = deleteSingleProduct
 module.exports.updateStockLevel = updateStockLevel
 module.exports.updateSingleProduct = updateSingleProduct
 module.exports.invalidRoute = invalidRoute
-
-
-

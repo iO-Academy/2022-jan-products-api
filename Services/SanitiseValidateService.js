@@ -42,10 +42,6 @@ const DataCheckers = {
             return false
         }
     },
-
-    availableSKU: (SKU, connection) => {
-
-    }
 }
 
 module.exports = DataCheckers
