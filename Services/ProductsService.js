@@ -1,5 +1,3 @@
-const DataCheckers = require('../Services/SanitiseValidateService')
-
 const getAllProducts = async (connection) => {
     return await connection.query("SELECT `name`, `price`, `SKU` FROM `products`;")
 }
@@ -13,6 +11,10 @@ const getSingleProduct = async (connection, sku) => {
     sku ? response = await connection.query('SELECT `SKU`, `name`, `price`, `stock_level` FROM `products` WHERE `SKU` =' + `'${sku}' LIMIT 1`)
         : response = false
     return response
+}
+
+const deleteSingleProduct = async (connection, sku) => {
+    return await connection.query('DELETE FROM `products` WHERE `SKU` =' + `'${sku}';`)
 }
 
 const updateSingleStockLevel = async (connection, sku, stock_level) => {
@@ -32,4 +34,4 @@ module.exports.addSingleProduct = addSingleProduct
 module.exports.getSingleProduct = getSingleProduct
 module.exports.updateSingleProduct = updateSingleProduct
 module.exports.updateSingleStockLevel = updateSingleStockLevel
-
+module.exports.deleteSingleProduct = deleteSingleProduct
