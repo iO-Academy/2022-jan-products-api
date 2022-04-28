@@ -162,9 +162,7 @@ This API supports the following HTTP requests:
 <h5>Example URL:</h5>
 
 ``/products``
-<h5>Required POST Body Data:</h5>
 
-``SKU, name, price, stock_level``		
 <h3>Success Response</h3>
 <h5>Code:</h5>
 
