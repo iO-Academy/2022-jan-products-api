@@ -19,7 +19,10 @@ const addSingleProduct = async(req, res) => {
     const price = DataCheckers.sanitiseAndValidatePrice(req.body.price)
     const stock_level = DataCheckers.sanitiseAndValidateStockLevel(req.body.stock_level)
     const tableData = await ProductService.getSingleProduct(connection, sku)
-    const products = await ProductService.addSingleProduct(connection, sku, name, price, stock_level)
+    console.log(tableData.length)
+    const products = tableData.length === 0
+                        ? await ProductService.addSingleProduct(connection, sku, name, price, stock_level)
+                        :   ''
     let apiResponse = tableData.length === 0 && sku && name && price && stock_level
                         ? JsonResponseService(products, true, 'Success', 201)
                         : JsonResponseService()
